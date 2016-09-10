@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
 
-
 module.exports = {
     entry: "./app/index.js",
     output: {
@@ -10,7 +9,10 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.js$/, loader: 'babel?presets[]=es2015'}
+            {test: /\.[js|jsx]$/, loader: 'babel?presets[]=es2015'}
         ]
     },
+    devServer: {
+        hot: true
+    }
 };
