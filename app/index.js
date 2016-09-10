@@ -1,16 +1,25 @@
+import  React from "react";
+import  {Router, browserHistory} from "react-router";
+import  {render} from "react-dom";
+
+
 import  route  from  './route';
 
-console.info("我是 index 你是谁");
 
+let User = React.createClass({
 
-class Cfl {
-    constructor() {
-        console.info("我是cfl构造器");
+    render(){
+        return (<div>w我是用户列表</div>)
     }
+});
 
-    sayHello() {
-        console.info("我说SayHello");
+
+let roule = React.createClass({
+    render(){
+        return (<div>roule</div>)
     }
-}
-var cfl = new Cfl();
-cfl.sayHello();
+});
+
+render((<Router history={browserHistory}><Router path="/app"
+                                                 component={User}></Router></Router>), document.getElementById("root"));
+

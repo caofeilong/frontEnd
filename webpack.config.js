@@ -10,7 +10,16 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.js|jsx$/, loader: 'babel?presets[]=es2015'}
+            {
+                test: /\.js|jsx$/, loader: 'babel',
+                exclude: /(node_modules|bower_components)/,
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            }
         ]
+    },
+    devServer: {
+        //contentBase: "/app/"
     }
 };
