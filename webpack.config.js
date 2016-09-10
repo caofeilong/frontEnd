@@ -5,14 +5,12 @@ module.exports = {
     entry: "./app/index.js",
     output: {
         path: `${__dirname}/build/`,
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: '/assets/'
     },
     module: {
         loaders: [
-            {test: /\.[js|jsx]$/, loader: 'babel?presets[]=es2015'}
+            {test: /\.js|jsx$/, loader: 'babel?presets[]=es2015'}
         ]
-    },
-    devServer: {
-        hot: true
     }
 };

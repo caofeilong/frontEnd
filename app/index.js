@@ -1,7 +1,16 @@
+import  route  from  './route';
 
-var _ = rquire("lodash");
-
-var user = require('./user');
+console.info("我是 index 你是谁");
 
 
-import roule  from  "./roule";
+class Cfl {
+    constructor() {
+        console.info("我是cfl构造器");
+    }
+
+    sayHello() {
+        console.info("我说SayHello");
+    }
+}
+var cfl = new Cfl();
+cfl.sayHello();

@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/assets/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -46,15 +46,13 @@
 
 	"use strict";
 
-	var _roule = __webpack_require__(1);
+	var _route = __webpack_require__(1);
 
-	var _roule2 = _interopRequireDefault(_roule);
+	var _route2 = _interopRequireDefault(_route);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var _ = rquire("lodash");
-
-	var user = __webpack_require__(2);
+	console.info("我是 index 你是谁");
 
 /***/ },
 /* 1 */
@@ -62,17 +60,7 @@
 
 	"use strict";
 
-	var roule = "我叫曹飞龙，你是谁啊？";
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var a = "cfl";
-	var b = "cfl1111";
-	var c = "111";
+	console.info("我是router");
 
 /***/ }
 /******/ ]);
