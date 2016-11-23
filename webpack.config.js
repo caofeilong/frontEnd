@@ -4,8 +4,8 @@ var path = require('path');
 module.exports = {
     entry: "./app/index.js",
     output: {
-        path: `${__dirname}/build/`,
-        filename: '[name].js',
+        path: `${__dirname}/ref/`,
+        filename: '[name]-[chunkhash].js',
         publicPath: '/assets/'
     },
     module: {
