@@ -8,19 +8,18 @@ import  route  from  './route';
 
 
 let User = React.createClass({
-
     render(){
-        return (<div>w我是用户列表</div>)
+        return (<div>ded</div>)
     }
 });
 
 
 let roule = React.createClass({
     render(){
-        return (<div>cffl33</div>)
+        return (<div>cffld33</div>)
     }
 });
 
-render((<Router history={browserHistory}><Router path="/app"
+render((<Router history={browserHistory}><Router path="/"
                                                  component={User}></Router></Router>), document.getElementById("root"));
 

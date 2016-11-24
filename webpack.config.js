@@ -5,7 +5,7 @@ module.exports = {
     entry: "./app/index.js",
     output: {
         path: `${__dirname}/ref/`,
-        filename: '[name]-[chunkhash].js',
+        filename: '[name].js',
         publicPath: '/assets/'
     },
     module: {
@@ -20,6 +20,6 @@ module.exports = {
         ]
     },
     devServer: {
-        //contentBase: "/app/"
+        contentBase: "ref/"
     }
 };
