@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/caofeilong/frontEnd#readme",
   "dependencies": {
+<<<<<<< HEAD
     "antd": "^1.11.3",
+=======
+    "jquery": "^3.1.1",
+>>>>>>> 0b463ce551a5a1e21a8ba63e89a31d5e174fae2a
     "lodash": "^4.15.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
