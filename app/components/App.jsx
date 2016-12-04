@@ -7,7 +7,6 @@ class App extends Component {
             <div>
                 <div style={{ padding: 20 }}>
                     {this.props.children}
-                    <Link to="/home" >Calendar</Link>
                 </div>
             </div>
         )

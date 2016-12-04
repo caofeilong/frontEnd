@@ -5,3 +5,4 @@ var compiler = webpack({
     // configuration
 });
 var server = new WebpackDevServer(compiler, {});
+var a = "23";
