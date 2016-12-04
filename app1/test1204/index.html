@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <title>jq广告轮播</title>
+
+
+    <style>
+        @import "./font-awesome/css/font-awesome.css";
+        #focus{
+            width:790px;
+            height: 340px;
+            overflow: hidden;
+        }
+        .left{
+            height:50px;
+            width:30px;
+            position: relative; top: 170px;
+
+        }
+        .right{
+            height:50px;
+            width: 30px;
+            position: relative; left: 728px; top: 170px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="focus">
+        <button class="left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+        <button class="right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <img src="1.jpg" width="790" height="340">
+        <img src="2.jpg" width="790" height="340">
+        <img src="3.jpg" width="790" height="340">
+        <img src="4.jpg" width="790" height="340">
+        <img src="5.jpg" width="790" height="340">
+        <img src="6.jpg" width="790" height="340">
+        <img src="7.jpg" width="790" height="340">
+        <img src="8.jpg" width="790" height="340">
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script src="./q.js"></script>
+</body>
+</html>
