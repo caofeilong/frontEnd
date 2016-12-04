@@ -1,10 +1,11 @@
-var components = require('../components/AppleactionComponent.jsx')
+import  React from "react";
 
 module.exports = {
-    path: "/re",
-    component: components,
-    //indexRoute: {component: require('../components/AppleactionComponent.jsx')},
-    //childRoutes: [
-        //require("./home")
-    //]
+    childRoutes: [{
+        path: '/',
+        component: require('../components/App.jsx'),
+        childRoutes: [
+            require('./home'),
+        ]
+    }]
 };

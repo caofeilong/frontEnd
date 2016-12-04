@@ -1,7 +1,9 @@
+console.info("home");
 module.exports = {
-    path: '/home',
-    onLeave: function (params) {
-    },
-    onEnter: function (params) {
+    path: 'home',
+    getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+            cb(null, require('./Home.jsx'))
+        })
     }
-};
+}
