@@ -1,14 +1,16 @@
 var webpack = require('webpack');
 var path = require('path');
-
+var fs = require('fs');
+var cheerio = require('cheerio');
 
 module.exports = function (config) {
+    var {devServer, publicPath} = config;
     return {
         entry: "./app/index.js",
         output: {
             path: `${__dirname}/ref/`,
-            filename: '[name].js',
-            publicPath: config.publicPath
+            filename: '[name]' + (devServer ? '.[chunkhash]' : '') + '.js',
+            publicPath: publicPath
         },
         module: {
             loaders: [
@@ -23,6 +25,18 @@ module.exports = function (config) {
         },
         devServer: {
             contentBase: "ref/"
-        }
+        }, plugins: [
+            function () {
+                this.plugin('done', stats => {
+                    fs.readFile('./app/index.html', (err, data) => {
+                        const $ = cheerio.load(data.toString());
+                        $('script[src*=dest]').attr('src', ".." + publicPath + 'main' + (devServer ? '.' + stats.hash : '') + '.js');
+                        fs.writeFile('./ref/index.html', $.html(), err => {
+                            !err && console.log('Set has success: ' + stats.hash)
+                        })
+                    })
+                })
+            }
+        ]
     };
 }
