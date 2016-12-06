@@ -26,7 +26,13 @@ module.exports = function (config) {
         plugins: [
             new HtmlWebpackPlugin({
                 template: "./app/index.html"
+            }),
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false
+                }
             })
+
         ]
     };
 }
