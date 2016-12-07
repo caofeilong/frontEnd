@@ -5,5 +5,5 @@ import  jquery from "jquery";
 import  routes  from  './routes';
 
 
-render((<Router history={browserHistory} routes={routes} />), document.getElementById("root"));
+render((<Router history={browserHistory} routes={routes}/>), document.getElementById("root"));
 
