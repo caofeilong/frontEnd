@@ -19,9 +19,20 @@ module.exports = function (config) {
           exclude: /(node_modules|bower_components)/,
           query: {
             presets: ['es2015', 'react']
-          }
+          },
+        },
+        {
+          test: /\.scss$/,
+          loaders: ["style", "css?module", "sass"]
+        },
+        {
+          test: /\.gscss$/,
+          loaders: ["style", "css", "sass"]
         }
       ]
+    },
+    sassLoader: {
+      includePaths: [path.resolve(__dirname, "./routes")]
     },
     plugins: [
       new HtmlWebpackPlugin({

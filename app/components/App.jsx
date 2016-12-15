@@ -5,9 +5,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div style={{ padding: 20 }}>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     )
   }
