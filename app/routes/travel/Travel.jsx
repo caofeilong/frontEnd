@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import  {Link}  from 'react-router';
+import  styles from './Travel.scss';
 import  $ from 'jquery';
 
 class Travel extends Component {
-
   componentDidMount() {
-    this.renderMap();
-  }
-
-  componentDidUpdate() {
     this.renderMap();
   }
 
@@ -17,60 +13,84 @@ class Travel extends Component {
     var map = new BMap.Map("allmap");
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
     map.enableScrollWheelZoom(true);
-
-    var p1 = new BMap.Point(116.301934, 39.977552);
-    var p2 = new BMap.Point(116.508328, 39.919141);
-
-
     let points = this.state.points;
-
-    if (points.length === 1) {
-      var local = new BMap.LocalSearch(map, {
-        renderOptions: {map: map}
-      });
-      local.search(points[0]);
-    } else if (points.length === 2) {
-      var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, autoViewport: true}});
-      driving.search(points[0], points[1]);//waypoints表示途经点
-    } else {
-      let wayPoints = points.slice(1, points.length - 1);
-      console.info(wayPoints);
-      var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, autoViewport: true}});
-      driving.search(points[0], points[points.length - 1], {waypoints: wayPoints});//waypoints表示途经点
+    if (points && points.length > 0) {
+      for (var index in points) {
+        if (!points[index]) {
+          points.splice(index, 1);
+        }
+      }
+      if (points.length === 1) {
+        var local = new BMap.LocalSearch(map, {
+          renderOptions: {map: map}
+        });
+        local.search(points[0]);
+      } else if (points.length === 2) {
+        var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, autoViewport: true}});
+        driving.search(points[0], points[1]);//waypoints表示途经点
+      } else {
+        let wayPoints = points.slice(1, points.length - 1);
+        console.info(wayPoints);
+        var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, autoViewport: true}});
+        driving.search(points[0], points[points.length - 1], {waypoints: wayPoints});//waypoints表示途经点
+      }
     }
-
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      points: []
+      points: ["北京"]
     }
   }
 
-  addPoint() {
+  addPoint(i) {
     let oldPoints = this.state.points || [];
-    oldPoints.push($(this.refs.pointName).val());
+    oldPoints.splice(i + 1, 0, '');
+    this.setState({
+      points: oldPoints
+    })
+  }
+
+  changeValue(i, event) {
+    let oldPoints = this.state.points || [];
+    oldPoints[i] = event.target.value;
+    this.setState({
+      points: oldPoints
+    })
+  }
+
+  removePoint(i) {
+    let oldPoints = this.state.points || [];
+    oldPoints.splice(i, 1);
     this.setState({
       points: oldPoints
     })
   }
 
   render() {
+    let {points} = this.state;
     return (
-      <div>
-        <div>
-          <input type="text" ref="pointName"/>
-          <button onClick={this.addPoint.bind(this)}>添加</button>
+      <div className={styles.main}>
+        <div className={styles.serach}>
+          <label for="">
+            路线规划
+          </label>
+
+          {points.map((item, i) => {
+            return <div key={i} className={styles.item}>
+              <input type="text" value={item ||""} onChange={this.changeValue.bind(this,i)}/>
+              <a onClick={this.addPoint.bind(this,i)}>+</a>
+              <a onClick={this.removePoint.bind(this, i)}>-</a>
+            </div>
+          })}
+          <br/>
+          <button onClick={this.renderMap.bind(this)} className={styles.btnmain}>生成路线</button>
         </div>
-        <div>
-          {this.state.points}
-        </div>
-        <div id="allmap" style={{width:1000,height:800}}></div>
+        <div id="allmap" style={{width:"100%",height:800}}></div>
       </div>
     )
   }
-
 }
 
 
