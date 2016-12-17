@@ -7,6 +7,7 @@ module.exports = {
     indexRoute: {onEnter: (nextState, replace) => replace('/home')},
     childRoutes: [
       require('./home'),
+      require('./travel')
     ]
   }]
 };
