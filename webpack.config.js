@@ -7,7 +7,7 @@ module.exports = function (config) {
         entry: "./app/index.js",
         output: {
             path: `${__dirname}/ref/`,
-            filename: '[name].js',
+            filename: '[name].[chunkhash:8].js',
             publicPath: config.publicPath
         },
         module: {
