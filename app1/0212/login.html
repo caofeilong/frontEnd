@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="jquery.js"></script>
+
+  <script type="text/javascript" language="JavaScript">
+    $(document).ready(function(){
+
+    $("#login").click(
+      function(){
+        var a = $("#name1").val();
+        var b= $("#pwd").val();
+        var c= $("#repwd").val();
+        alert(a+b+c);
+      }
+    )
+
+})
+
+  </script>
+</head>
+<body>
+  <div>
+    <p ><label>账&nbsp;&nbsp;号：</label><input id="name1" ></p>
+    <p ><lable>密&nbsp;&nbsp;码：</lable><input id="pwd"></p>
+    <P ><lable>重复密码：</lable><input id="repwd"></P>
+    <button id="login">注册</button>
+
+  </div>
+
+</body>
+</html>
