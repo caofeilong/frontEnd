@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     var len = mg.length;
 
-    function play(n) {
+   play(n) {
 
 
         mg.eq(n).fadeIn(1000).siblings("img").fadeOut(1000);
