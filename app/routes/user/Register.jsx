@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import  $   from 'jquery';
 
-className Home extends Component {
+class Home extends Component {
 
   register() {
     $.post('/api/user/register', {
