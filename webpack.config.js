@@ -43,6 +43,14 @@ module.exports = function (config) {
           warnings: false
         }
       })
-    ]
+    ],
+    devServer: {
+      proxy: {
+        '/api/*': {
+          target: 'http://lovesomnus.com:3000',
+          secure: false
+        }
+      }
+    }
   };
 }
