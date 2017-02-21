@@ -42,7 +42,8 @@ module.exports = function (config) {
         compress: {
           warnings: false
         }
-      })
+      }),
+      "react-hot-loader/babel"
     ],
     devServer: {
       proxy: {
