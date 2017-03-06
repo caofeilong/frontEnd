@@ -12,40 +12,45 @@ module.exports = function (config) {
       filename: '[name]' + (devServer ? '.[chunkhash]' : '') + '.js',
       publicPath: publicPath
     },
+    resolve: {
+      extensions: ['.ts', '.es6', '.js', '.json', '.jsx']
+    },
     module: {
-      loaders: [
+      rules: [
         {
-          test: /\.js|jsx$/, loader: 'babel',
-          exclude: /(node_modules|bower_components)/,
-          query: {
-            presets: ['es2015', 'react']
-          },
+          test: /\.js|jsx$/,
+          exclude: [/node_modules/],
+          use: [{
+            loader: 'babel-loader?presets[]=es2015&presets[]=react',
+          }]
         },
         {
           test: /\.scss$/,
-          loaders: ["style", "css?module", "sass"]
+          exclude: [/node_modules/],
+          loaders: ["style-loader", "css-loader?module", "sass-loader"]
         },
         {
           test: /\.gscss$/,
-          loaders: ["style", "css", "sass"]
+          exclude: [/node_modules/],
+          loaders: ["style-loader", "css-loader", "sass-loader"]
         }
       ]
     },
-    sassLoader: {
-      includePaths: [path.resolve(__dirname, "./routes")]
-    },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./app/index.html"
+        template: 'html-loader!./app/index.html'
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
         }
       }),
-      "react-hot-loader/babel"
+      //"react-hot-loader/babel"
     ],
     devServer: {
+      hot: true,
+      host: "0.0.0.0",
+      hotOnly: true,
       proxy: {
         '/api/*': {
           target: 'http://lovesomnus.com:3000',
