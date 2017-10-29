@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #clock01{
+      width: 493px;
+    }
+    #test01{
+      width: 493px;
+      margin:0px auto;
+      position: relative;
+    }
+
+    .seconds{
+      border: 2px solid red;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      bottom: 50%;
+      margin-left: -2px;
+    }
+    .min{
+      border:2px solid green;
+      position: absolute;
+      top:80px;
+      left:50%;
+      bottom:50%;
+      margin-left: -2px;
+    }
+    .h{
+      border:2px solid orange;
+      position: absolute;
+      top:120px;
+      left:50%;
+      bottom:50%;
+      margin-left: -2px;
+    }
+  </style>
+  <script src="../app1/jquery.js"></script>
+  <script>
+
+    $(document).ready(function(){
+      var count =  (new Date().getTime()/1000)+8*3600;
+      setInterval(function(){
+        count++;
+        ss();
+      },1000)
+      ss();
+      function ss(){
+        $('.seconds').css({
+          transform:" rotate("+(360/60*count)+"deg)",
+          "transform-origin":"bottom"
+        })
+        $('.min').css({
+          transform:" rotate("+(0.1*count)+"deg)",
+          "transform-origin":"bottom"
+        })
+        $('.h').css({
+          transform:" rotate("+(360/(12*3600))*count+"deg)",
+          "transform-origin":"bottom"
+        });
+      }
+
+    });
+  </script>
+</head>
+<body>
+<div id="test01">
+  <img src="Img\clock.jpg" id="clock01">
+  <div class="seconds"></div>
+  <div class="min"></div>
+  <div class="h"></div>
+</div>
+</body>
+</html>
