@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #zhuanpan{
+      width: 263px;
+      margin: 50px auto;
+    }
+    #zhuanpan img{
+      width: 100%;
+    }
+
+    #btn{
+      width:61px;
+      display: block;
+      margin: -75% auto 0;
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+      position: relative;
+    }
+    #btn img{
+      width:100%;
+    }
+
+  </style>
+  <script src="../app1/jquery.js"></script>
+  <script>
+
+    var clickCount=0;
+    function   run(){
+       var target= Math.floor(Math.random()*9);
+//
+      clickCount++;
+      $('#zhuanpanImg').css({
+        transform:" rotate("+(3600*clickCount+target*45)+"deg)",
+        transition:  "5s transform"
+      });
+//      alert('转起来')
+
+    }
+
+
+
+
+
+  </script>
+</head>
+<body>
+  <div id="zhuanpan">
+    <img src="Img\four_zhuanpan.gif"  id="zhuanpanImg">
+    <button id="btn"   onclick="run()">
+      <img id="aa" src="Img\four2.gif" >
+    </button>
+  </div>
+
+</body>
+</html>
